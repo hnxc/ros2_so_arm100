@@ -1,0 +1,27 @@
+moveit_manage_controllers: false
+moveit_controller_manager: moveit_simple_controller_manager/MoveItSimpleControllerManager
+
+moveit_simple_controller_manager:
+  # Prevent the plugin from auto-discovering controllers
+  use_controller_manager: false
+
+  controller_names:
+    - joint_trajectory_controller
+    - gripper_controller
+
+  joint_trajectory_controller:
+    type: FollowJointTrajectory
+    default: true
+    action_ns: /joint_trajectory_controller/follow_joint_trajectory
+    joints:
+      - shoulder_pan_joint
+      - shoulder_lift_joint
+      - elbow_joint
+      - wrist_pitch_joint
+      - wrist_roll_joint
+
+  gripper_controller:
+    type: FollowJointTrajectory
+    action_ns: /gripper_controller/follow_joint_trajectory
+    joints:
+      - jaw_joint
