@@ -1,10 +1,8 @@
-moveit_manage_controllers: false
 moveit_controller_manager: moveit_simple_controller_manager/MoveItSimpleControllerManager
+moveit_manage_controllers: false
 
 moveit_simple_controller_manager:
-  # Prevent the plugin from auto-discovering controllers
-  use_controller_manager: false
-
+  use_controller_manager: false  # So it doesn’t auto-discover (which is buggy for some)
   controller_names:
     - joint_trajectory_controller
     - gripper_controller
